@@ -2,14 +2,14 @@
 
 * man *comando* - manual de um comando
 * *comando* --help - ajuda resumida
-* whatis *comando* - descriÁ„o r·pida
+* whatis *comando* - descri√ß√£o r√°pida
 * clear - limpar o terminal (ou ctrl+ l)
 * cd - navegar entre diretorios
 * ls - listar conteudo
 * pwd - diretorio atual
 * mkdir *pasta* - cria um diretorio
 * rmdir *pasta* - remove um diretorio vazio 
-	* -rf para diretorios n„o vazios
+	* -rf para diretorios n√£o vazios
 * cp *original* *copia* - copia arquivos
 * mv - move arquivos
 * rv - remove arquivos
@@ -22,9 +22,9 @@
 * head - ver as primeiras linhas de um arquivo
 * tail - ver as ultimas linhas de um arquivo
 * du - exibe o tamanho dos arquivos
-* curl http://ifconfig.co - exibe o endereÁo de IP
+* curl http://ifconfig.co - exibe o endere√ßo de IP
 	* http://ifconfig.co/country - exibe o pais
 	* http://ifconfig.co/city - exibe a cidade
 * export NOME=sofia - define uma variavel de ambiente
-* echo &NOME - exibe o conte˙do da variavel de ambiente
-* echo echo ì10 / 5î | bc - Calculadora, divide 10 por 5
+* echo &NOME - exibe o conte√∫do da variavel de ambiente
+* echo echo ‚Äú10 / 5‚Äù | bc - Calculadora, divide 10 por 5
