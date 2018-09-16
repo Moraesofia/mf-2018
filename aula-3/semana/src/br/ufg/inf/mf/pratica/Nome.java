@@ -7,7 +7,6 @@ import java.time.format.TextStyle;
 public class Nome {
 
         public static void main(String[] args) {
-        //Locale.setDefault(new Locale("fr", "FR"));
         System.out.println(LocalDate.now().getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.getDefault()));
         }
 }
