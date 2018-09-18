@@ -15,7 +15,7 @@ public class Aplicacao {
 
 	public static void main(String[] args) throws Exception {
 		String urlPlanilha;
-		if (args.length == 1) {
+		if (args.length == 1 && args[0].startsWith("http")) {
 			urlPlanilha = args[0];
 		} else if (args.length == 0) {
 			urlPlanilha = "http://repositorio.dados.gov.br/educacao/CADASTRO%20DAS%20IES_2011.csv";
