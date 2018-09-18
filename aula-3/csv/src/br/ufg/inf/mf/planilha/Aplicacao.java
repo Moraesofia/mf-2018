@@ -8,8 +8,10 @@ import java.util.List;
 
 public class Aplicacao {
 
-	private static String[] siglas = { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB",
-			"PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
+	private static String[] siglas = { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG",
+			"PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
+
+	private static int[] instituicoes = new int[27];
 
 	public static void main(String[] args) throws Exception {
 		String urlPlanilha;
@@ -18,7 +20,6 @@ public class Aplicacao {
 		} else if (args.length == 0) {
 			urlPlanilha = "http://repositorio.dados.gov.br/educacao/CADASTRO%20DAS%20IES_2011.csv";
 		} else {
-			System.out.println("Entrada Invalida");
 			throw new IllegalArgumentException("ENTRADA INVALIDA");
 		}
 
@@ -37,40 +38,53 @@ public class Aplicacao {
 		}
 		br.close();
 
-		// System.out.println(bufSaida);
-		int[] instituicoes = new int[27];
-		
 		for (String row : bufSaida) {
 			String[] teste = row.split(";");
 
 			instituicoes = identificaEstado(teste[9], instituicoes);
-			//System.out.println(teste[9]);
 		}
-		
-		//ordena vetor
-		for (int i = 1; i < instituicoes.length; i++) {
-		    for (int j = 0; j < i; j++) {
-		        if (instituicoes[i] > instituicoes[j]) {
-		            int temp = instituicoes[i];
-		            instituicoes[i] = instituicoes[j];
-		            instituicoes[j] = temp;
-		            
-		            String prov = siglas[i];
-		            siglas[i] = siglas[j];
-		            siglas[j] = prov;
-		        }
-		    }
-		}
-		
+
+		ordenaVetores(instituicoes);
+
 		System.out.println("Total de instituições de educação superior  por estado (ordem decrescente):");
-		for (int i = 0; i < instituicoes.length-1; i++) {
+		for (int i = 0; i < instituicoes.length - 1; i++) {
 			System.out.println(siglas[i] + " : " + instituicoes[i]);
 		}
 
 	}
 
+	/**
+	 * Este metodo ordena os vetores contendo os estados e o numero de instituições
+	 * de ensino superior que possuem em ordem decrescente.
+	 * 
+	 * @param instituicoes
+	 */
+	private static void ordenaVetores(int[] instituicoes) {
+		// ordena vetor
+		for (int i = 1; i < instituicoes.length; i++) {
+			for (int j = 0; j < i; j++) {
+				if (instituicoes[i] > instituicoes[j]) {
+					int temp = instituicoes[i];
+					instituicoes[i] = instituicoes[j];
+					instituicoes[j] = temp;
+
+					String prov = siglas[i];
+					siglas[i] = siglas[j];
+					siglas[j] = prov;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Este metodo identifica a sigla correspondente a um estado brasileiro inserida
+	 * e aumenta o numero de instituições referente àquele estado.
+	 * 
+	 * @param sigla
+	 * @param instituicoes
+	 * @return
+	 */
 	public static int[] identificaEstado(String sigla, int[] instituicoes) {
-		
 
 		switch (sigla) {
 
@@ -160,6 +174,5 @@ public class Aplicacao {
 		}
 		return instituicoes;
 	}
-	
 
 }
