@@ -41,10 +41,10 @@ public class Aplicacao {
 		for (String row : bufSaida) {
 			String[] teste = row.split(";");
 
-			instituicoes = identificaEstado(teste[9], instituicoes);
+			identificaEstado(teste[9]);
 		}
 
-		ordenaVetores(instituicoes);
+		ordenaVetores();
 
 		System.out.println("Total de instituições de educação superior  por estado (ordem decrescente):");
 		for (int i = 0; i < instituicoes.length - 1; i++) {
@@ -59,8 +59,8 @@ public class Aplicacao {
 	 * 
 	 * @param instituicoes
 	 */
-	private static void ordenaVetores(int[] instituicoes) {
-		// ordena vetor
+	private static void ordenaVetores() {
+
 		for (int i = 1; i < instituicoes.length; i++) {
 			for (int j = 0; j < i; j++) {
 				if (instituicoes[i] > instituicoes[j]) {
@@ -84,7 +84,7 @@ public class Aplicacao {
 	 * @param instituicoes
 	 * @return
 	 */
-	public static int[] identificaEstado(String sigla, int[] instituicoes) {
+	public static void identificaEstado(String sigla) {
 
 		switch (sigla) {
 
@@ -172,7 +172,6 @@ public class Aplicacao {
 		default:
 			break;
 		}
-		return instituicoes;
 	}
 
 }
