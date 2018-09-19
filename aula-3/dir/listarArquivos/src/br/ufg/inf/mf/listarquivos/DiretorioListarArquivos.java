@@ -1,4 +1,4 @@
-package br.ufg.inf.mf.diretorio;
+package br.ufg.inf.mf.listarquivos;
 
 import java.io.File;
 
