@@ -111,8 +111,6 @@ crashlytics-build.properties
 .gradle
 bin/
 tmp/
-*.project
-*.class
 *.tmp
 *.bak
 *.swp
