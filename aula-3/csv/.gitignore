@@ -164,9 +164,9 @@ local.properties
 .cproject
 
 # JDT-specific (Eclipse Java Development Tools)
-#.project
-#.settings/
-#.classpath
+.project
+.settings/
+.classpath
 
 # PDT-specific
 .buildpath
