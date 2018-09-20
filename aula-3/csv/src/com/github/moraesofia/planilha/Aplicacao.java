@@ -1,4 +1,4 @@
-package br.ufg.inf.mf.planilha;
+package com.github.moraesofia.planilha;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

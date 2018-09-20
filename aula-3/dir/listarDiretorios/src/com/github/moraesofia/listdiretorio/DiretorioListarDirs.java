@@ -1,4 +1,4 @@
-package br.ufg.inf.mf.listdiretorio;
+package com.github.moraesofia.listdiretorio;
 
 import java.io.File;
 

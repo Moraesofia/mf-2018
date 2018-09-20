@@ -1,4 +1,4 @@
-package br.ufg.inf.mf.listarquivos;
+package com.github.moraesofia.listarquivos;
 
 import java.io.File;
 

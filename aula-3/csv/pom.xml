@@ -18,7 +18,7 @@
     <name>${project.groupId}:${project.artifactId}</name>
 
     <description>
-        Projeto que para leitura de planilha via url e extracao de informacoes para a aula de metodos e ferramentas de ES 2018-2
+        Projeto para leitura de planilha via url e extracao de informacoes para a aula de metodos e ferramentas de ES 2018-2
     </description>
 
     <url>https://github.com/Moraesofia/mf-2018/tree/master/aula-3/csv</url>
