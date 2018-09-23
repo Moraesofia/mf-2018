@@ -1,11 +1,18 @@
-package com.github.moraesofia.listdiretorio;
+package com.github.moraesofia.listdiretorios;
 
 import java.io.File;
 
+/**
+ * Código que, quando executado, exibe o caminho completo de todos os diretórios
+ * e subdiretórios acessíveis a partir do diretório corrente.
+ * 
+ * @author sofia
+ *
+ */
 public class DiretorioListarDirs {
 
 	public static void main(String[] args) {
-		
+
 		File[] directories = new File(System.getProperty("user.dir")).listFiles(File::isDirectory);
 
 		for (File file : directories) {

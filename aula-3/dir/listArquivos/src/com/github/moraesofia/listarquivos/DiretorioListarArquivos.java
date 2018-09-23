@@ -2,6 +2,12 @@ package com.github.moraesofia.listarquivos;
 
 import java.io.File;
 
+/**
+ * Código que, quando executado, exibe o caminho completo dos arquivos.
+ * 
+ * @author sofia
+ *
+ */
 public class DiretorioListarArquivos {
 
 	public static void main(String[] args) {

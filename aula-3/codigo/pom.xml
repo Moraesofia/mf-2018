@@ -3,14 +3,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+<!-- Pom baseado no projeto "exemplo" em sua branch develop - fornecido pelo professor - com as devidas alteracoes necessarias -->
+
     <groupId>com.github.moraesofia</groupId>    <!-- (!) -->
-    <artifactId>contaLinhas</artifactId>    <!-- (!) -->
+    <artifactId>codigo</artifactId>    <!-- (!) -->
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
     <properties>
         <project.githubUser>Moraesofia</project.githubUser>        <!-- (!) -->
-        <project.githubRepository>contaLinhas</project.githubRepository>        <!-- (!) -->
+        <project.githubRepository>codigo</project.githubRepository>        <!-- (!) -->
         <project.mainClassName>ContaLinhas</project.mainClassName>        <!-- (!) -->
 
         <project.mainClass>${project.groupId}.${project.artifactId}.${project.mainClassName}</project.mainClass>

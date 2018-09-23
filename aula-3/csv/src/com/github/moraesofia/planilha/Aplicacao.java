@@ -1,52 +1,85 @@
 package com.github.moraesofia.planilha;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Código que, quando executado, oferece o seguinte comportamento esperado: (a)
+ * o programa baixa o arquivo CSV conforme uma URL fornecida (por exemplo,
+ * aquela acima); (b) lista, em ordem decrescente, por estado, os totais de
+ * instituições de educação superior; (c) o programa deve assumir que as 10
+ * primeiras linhas do arquivo CSV devem ser ignoradas, enquanto a décima
+ * primeira linha contém o cabeçalho e, a partir da décima segunda, seguem os
+ * dados propriamente ditos conforme as várias colunas presente no arquivo cuja
+ * URL foi fornecida acima; (d) o programa deve usar a URL fornecida na linha de
+ * comandos, quando for executado e, caso o argumento não seja fornecido, deve
+ * usar aquela citada acima.
+ * 
+ * 
+ * @author sofia
+ *
+ */
 public class Aplicacao {
 
+	/**
+	 * Vetor com as siglas dos 27 estados brasileiros. Deve estar em sincronia com o
+	 * vetor instituicoes.
+	 */
 	private static String[] siglas = { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG",
 			"PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" };
 
+	/**
+	 * Vetor com 27 espaços, representando o numero de instituições de ensino
+	 * superior dos 27 estados brasileiros. Deve estar em sincronia com o vetor
+	 * siglas.
+	 */
 	private static int[] instituicoes = new int[27];
+
+	/**
+	 * Url com a planilha contendo os instituições de ensino superior brasileiras.
+	 */
+	private static String urlPadrao = "http://repositorio.dados.gov.br/educacao/CADASTRO%20DAS%20IES_2011.csv";
+
+	/**
+	 * Tamanho do cabeçalho padrão na planilha sendo trabalhada.
+	 */
+	private static int linhasPraPular = 11;
+
+	/**
+	 * Coluna contendo as siglas dos estados brasileiros na planilha sendo
+	 * trabalhada.
+	 */
+	private static int colunaPadrao = 9;
 
 	public static void main(String[] args) throws Exception {
 		String urlPlanilha;
 		if (args.length == 1 && args[0].startsWith("http")) {
 			urlPlanilha = args[0];
 		} else if (args.length == 0) {
-			urlPlanilha = "http://repositorio.dados.gov.br/educacao/CADASTRO%20DAS%20IES_2011.csv";
+			urlPlanilha = urlPadrao;
 		} else {
 			throw new IllegalArgumentException("ENTRADA INVALIDA");
 		}
 
-		URL url = new URL(urlPlanilha);
-
-		BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
 		List<String> bufSaida = new ArrayList<>();
-		String linha;
-		int contador = 0;
-		while ((linha = br.readLine()) != null) {
-			if (contador < 11) {
-				contador++;
-			} else {
-				bufSaida.add(linha + "\n");
-			}
-		}
-		br.close();
+
+		System.out.println("Lendo planilha, aguarde ...");
+		lePlanilhaUrl(urlPlanilha, bufSaida);
 
 		for (String row : bufSaida) {
 			String[] teste = row.split(";");
 
-			identificaEstado(teste[9]);
+			identificaEstado(teste[colunaPadrao]);
 		}
 
 		ordenaVetores();
 
-		System.out.println("Total de instituições de educação superior  por estado (ordem decrescente):");
+		System.out.println("Total de instituições de educação superior por estado (ordem decrescente):");
 		for (int i = 0; i < instituicoes.length - 1; i++) {
 			System.out.println(siglas[i] + " : " + instituicoes[i]);
 		}
@@ -54,8 +87,41 @@ public class Aplicacao {
 	}
 
 	/**
-	 * Este metodo ordena os vetores contendo os estados e o numero de instituições
-	 * de ensino superior que possuem em ordem decrescente.
+	 * Este metodo lê uma planilha provida por uma url, colocando suas linhas em uma
+	 * lista de Strings.
+	 * 
+	 * @param urlPlanilha
+	 * @param bufSaida
+	 * @throws MalformedURLException
+	 * @throws IOException
+	 */
+	private static void lePlanilhaUrl(String urlPlanilha, List<String> bufSaida)
+			throws MalformedURLException, IOException {
+		try {
+			URL url = new URL(urlPlanilha);
+			BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+			String linha;
+			int contador = 0;
+			while ((linha = br.readLine()) != null) {
+				if (contador < linhasPraPular) {
+					contador++;
+				} else {
+					bufSaida.add(linha + "\n");
+				}
+			}
+			br.close();
+		} catch (MalformedURLException mue) {
+			mue.printStackTrace();
+			throw new MalformedURLException("URL INVÁLIDA");
+		} catch (IOException io) {
+			io.printStackTrace();
+			throw new IOException("NAO FOI POSSÍVEL LER A PLANILHA");
+		}
+	}
+
+	/**
+	 * Este metodo ordena simultâneamente os vetores contendo os estados e o numero
+	 * de instituições de ensino superior que possuem em ordem decrescente.
 	 * 
 	 * @param instituicoes
 	 */
