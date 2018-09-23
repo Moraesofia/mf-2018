@@ -1,4 +1,4 @@
-package src.com.github.moraesofia.codigo;
+package com.github.moraesofia.codigo;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,7 +55,7 @@ public class ContaLinhas {
 		} else {
 			throw new IllegalArgumentException("ENTRADA INVALIDA");
 		}
-		findDirectories();
+
 	}
 
 	/**
