@@ -3,46 +3,48 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-<!-- Pom baseado no projeto "exemplo" em sua branch develop - fornecido pelo professor - com as devidas alteracoes necessarias -->
-
-    <groupId>com.github.moraesofia</groupId>    <!-- (!) -->
-    <artifactId>planilha</artifactId>    <!-- (!) -->
+    <groupId>com.github.moraesofia</groupId>
+    <artifactId>exemplo</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
     <properties>
-        <project.githubUser>Moraesofia</project.githubUser>        <!-- (!) -->
-        <project.githubRepository>csv</project.githubRepository>        <!-- (!) -->
-        <project.mainClassName>Aplicacao</project.mainClassName>        <!-- (!) -->
-
-        <project.mainClass>${project.groupId}.${project.artifactId}.${project.mainClassName}</project.mainClass>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.mainClass>com.github.moraesofia.planilha.Aplicacao</project.mainClass>
     </properties>
 
     <name>${project.groupId}:${project.artifactId}</name>
 
     <description>
-        Projeto '${project.artifactId}'.
+        Projeto de referência (exemplo) inicial de desenvolvimento em Java com uso de JUnit.
     </description>
 
-    <url>https://github.com/${project.githubUser}/${project.githubRepository}</url>
+    <url>https://github.com/moraesofia/mf-2018</url>
 
     <organization>
         <name>Instituto de Informática (UFG) - Fábrica de Software</name>
         <url>http://www.inf.ufg.br</url>
     </organization>
 
-    <inceptionYear>2018</inceptionYear>
+    <inceptionYear>2016</inceptionYear>
 
     <licenses>
         <license>
             <name>Creative Commons Attribution 4.0 International (CC BY 4.0)</name>
             <comments>A atribuição deve conter, explicitamente, a seguinte linha:
-                Copyright (c) 2018. Fábrica de Software - Instituto de Informática (UFG)
+                Copyright (c) 2016. Fábrica de Software - Instituto de Informática (UFG)
             </comments>
             <url>https://creativecommons.org/licenses/by/4.0/</url>
         </license>
     </licenses>
+
+    <developers>
+        <developer>
+            <id>moraesofia</id>
+            <name>Sofia Moraes</name>
+            <organization>Instituto de Informática (UFG)</organization>
+        </developer>
+    </developers>
 
     <dependencies>
 
@@ -81,7 +83,7 @@
     <build>
 
         <!-- Define o nome do arquivo a ser gerado (.jar é acrescentada) -->
-        <finalName>${project.artifactId}-${project.version}</finalName>
+        <finalName>Exemplo</finalName>
 
         <plugins>
 
@@ -131,13 +133,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.7.1</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.5</version>
             </plugin>
 
             <plugin>
@@ -175,14 +171,16 @@
                 <version>3.0.1</version>
                 <configuration>
                     <show>public</show>
+                    <additionalOptions>
+                        <additionalOption>-html5</additionalOption>
+                    </additionalOptions>
                 </configuration>
             </plugin>
 
             <!-- JavaNCSS -->
             <!-- Verifica limite de complexidade ciclomática -->
             <!-- Verifica número de sentenças (código fonte) -->
-            <!-- Está comentado pois não funciona corretamente com Java 8 -->
-            <!-- <plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>javancss-maven-plugin</artifactId>
                 <version>2.1</version>
@@ -191,7 +189,7 @@
                     <ccnLimit>111</ccnLimit>
                     <ncssLimit>90</ncssLimit>
                 </configuration>
-            </plugin> -->
+            </plugin>
 
             <!-- sonar -->
             <plugin>
@@ -215,10 +213,10 @@
                 </dependencies>
                 <configuration>
                     <targetClasses>
-                        <param>${project.groupId}.${project.artifactId}.*</param>
+                        <param>com.github.moraesofia.planilha.Aplicacao</param>
                     </targetClasses>
                     <targetTests>
-                        <param>${project.groupId}.${project.artifactId}.*</param>
+                        <param>com.github.moraesofia.planilha.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
@@ -303,8 +301,7 @@
                 </reportSets>
             </plugin>
 
-            <!-- Está comentado pois não funciona corretamente com Java 8 -->
-            <!-- <plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>javancss-maven-plugin</artifactId>
                 <version>2.1</version>
@@ -313,7 +310,7 @@
                     <ccnLimit>111</ccnLimit>
                     <ncssLimit>90</ncssLimit>
                 </configuration>
-            </plugin> -->
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -434,7 +431,7 @@
                         <configuration>
                             <apiToken>${snyk.token}</apiToken>
                             <failOnSeverity>low</failOnSeverity>
-                            <org>${project.githubRepository}</org>
+                            <org>kyriosdata</org>
                         </configuration>
                     </plugin>
 
@@ -449,7 +446,7 @@
             <build>
                 <plugins>
                     <!-- PASSO (1/2) PARA GERAÇÃO DE JAR FILE EXECUTÁVEL   -->
-                    <!-- Exige dir 'jars' e ${project.artifactId}.jar no mesmo diretório -->
+                    <!-- Exige dir 'jars' e Exemplo.jar no mesmo diretório -->
                     <!-- Dependências são copiadas para diretório 'jars'   -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -512,7 +509,7 @@
                                     <goal>single</goal>
                                 </goals>
                                 <configuration>
-                                    <finalName>${project.artifactId}-${project.version}-unico</finalName>
+                                    <finalName>Exemplo-unico</finalName>
                                     <archive>
                                         <manifest>
                                             <mainClass>${project.mainClass}</mainClass>
@@ -630,6 +627,9 @@
                         <version>3.0.1</version>
                         <configuration>
                             <show>public</show>
+                            <additionalOptions>
+                                <additionalOption>-html5</additionalOption>
+                            </additionalOptions>
                         </configuration>
                         <executions>
                             <execution>
