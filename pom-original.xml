@@ -2,7 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    
+<!-- Obs: este pom apresenta complicaçes com os comandos "mvn site" e "mvn javadoc:javadoc" 
+além de incompatibilidades com o java 8. O pom utilizado nos projetos foram modificados para corrigir tais erros-->
+    
     <groupId>com.github.moraesofia</groupId>
     <artifactId>exemplo</artifactId>
     <packaging>jar</packaging>
