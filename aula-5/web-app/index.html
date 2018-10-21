@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CNES</title>
+    <link rel="shortcut icon" href="https://www.freeiconspng.com/uploads/health-insurance-icon-png-3.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script>
+        function srcMap(name, lat, lon) {
+            console.log("Gerando mapa para: " + name);
+            $("#local").css("display", "block");
+            $("#est").html("<b>Local: </b>" + name);
+            $("#map").attr("src", "https://www.google.com/maps/embed/v1/place?key=AIzaSyAkHR_vcAMFDZmROW5WVnNJ11ho5MhQJgQ&q="+lat+","+lon);
+        }
+          
+        $.getJSON("estabelecimentos.json", function(data) {
+            var est_data = '';
+            $.each(data, function(key, val){
+                if (!val.latitude == "") {
+                    est_data += "<tr>";
+                    est_data += "<td>"+val.codigo+"</td>"
+                    est_data += "<td>"+val.razaoSocial+"</td>"
+                    est_data += "<td>"+val.latitude+"</td>"
+                    est_data += "<td>"+val.longitude+"</td>"
+                    est_data += "</tr>";
+                    }
+            });
+
+            $('#est_table').append(est_data);
+            $('td:nth-child(3),th:nth-child(3)').hide();
+            $('td:nth-child(4),th:nth-child(4)').hide();
+
+        });
+
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#est_table tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+          
+        $(document).ready(function() {
+            $( "#est_table tr" ).on( "click", function( event ) {
+                var row = $(this).closest("tr");
+                var name = row.find('td:eq(1)').text();
+                var lat = row.find('td:eq(2)').text();
+                var lon = row.find('td:eq(3)').text();
+                srcMap(name, lat, lon);
+            });
+        });     
+      </script>
+  </head>
+  <body>
+      <h1>Cadastro Nacional de Estabelecimentos de Saúde</h1>
+      <p>Obs.: <br>- o programa pode não funcionar direito com arquivos JSON muito grandes
+               <br>- o programa precisa de um servidor para funcionar</p>
+      <br>
+      <h3><i>!! Clique em um estabelecimento para ver sua localização no mapa</i></h3>
+      
+      
+      <input type="text" id="myInput" placeholder="Pesquise por um estabelecimento...">
+      <table class="tg">
+          <thead>
+              <tr>
+                  <th>CNES</th>
+                  <th>NOME</th>
+                  <th>LAT</th>
+                  <th>LON</th>
+              </tr>
+          </thead>
+          <tbody  id="est_table">
+          </tbody >
+      </table>
+      <br><br>     
+      <div id="local" style="width:100%;height:400px;display:none;">
+          <h2>Localização</h2>
+          <div id="est"></div>
+          <iframe id="map" width="600" height="450" frameborder="0" style="border:0" 
+                  src="" allowfullscreen></iframe>
+      </div>
+     
+  </body>
+</html>

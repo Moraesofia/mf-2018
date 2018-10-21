@@ -49,11 +49,6 @@ public class Main {
 	 */
 	private static final int COLUNA_LON = 40;
 
-	/**
-	 * Limite de linhas do csv a serem lidas.
-	 */
-	private static final int LIMITE = 500;
-
 	public static void main(String[] args) throws IOException {
 		String urlArquivo, arquivoJson;
 		boolean csvEncontrado = false;
@@ -68,8 +63,8 @@ public class Main {
 		}
 
 //		Valores padrao para teste:
-//		urlArquivo = ftp://ftp.datasus.gov.br/cnes/BASE_DE_DADOS_CNES_201809.ZIP;
-//		arquivoJson = estabelecimentos.json;
+//		urlArquivo = "ftp://ftp.datasus.gov.br/cnes/BASE_DE_DADOS_CNES_201809.ZIP";
+//		arquivoJson = "estabelecimentos.json";
 
 		try {
 			System.out.println("Conectando Url...");
@@ -200,17 +195,14 @@ public class Main {
 		String linha;
 		BufferedReader br = new BufferedReader(new InputStreamReader(str));
 		List<String> bufSaida = new ArrayList<>();
-
 		int contador = 0;
-		int limite = 0;
 		System.out.println("Lendo .csv, pode demorar alguns segundos...");
-		while ((linha = br.readLine()) != null && limite < LIMITE) {
+		while ((linha = br.readLine()) != null) {
 
 			if (contador < PULAR_LINHAS) {
 				contador++;
 			} else {
 				bufSaida.add(linha.replace("\"", "") + "\n");
-				limite++;
 			}
 		}
 		br.close();
