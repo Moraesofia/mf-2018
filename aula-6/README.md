@@ -14,7 +14,7 @@
 	- Coach (responsável pelo processo como um todo)
 	- Consultor (responsável por orientar a equipe na resolução de seus problemas específicos)
 	- Gerente (papel de chefia - toma decisões)
-- **Valores e práticas**: Simplicidade, Comunicação, eedback, Respeito e Coragem.
+- **Valores e práticas**: Simplicidade, Comunicação, Feedback, Respeito e Coragem.
 - **Práticas**: Planning Game, Stand-up Meeting, Metaphor, Small Releases, Simple Design Tests etc.
 - **Vantagens**: permite análise prévia, aceitação à mudanças e entregas constantes e funcionais.
 - **Desvantagens**: pode causar insegurança por parte do cliente, requer uma equipe maior, a refatoração para se adaptar ao XP pode ser mal vista e requer participação constante do cliente.
