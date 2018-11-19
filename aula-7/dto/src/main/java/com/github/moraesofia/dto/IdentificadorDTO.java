@@ -1,134 +1,190 @@
 package com.github.moraesofia.dto;
 
+import java.time.LocalDate;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
- * Classe Identificador que contem os atributos relevantes para a identificação
- * do paciente.
+ * Classe IdentificadorDTO que contem os atributos relevantes para a
+ * identificação do paciente.
  * <p>
  * Para mais informações, consulte o "package.info".
- * 
- * @author aluno
+ *
+ * @author sofia
  *
  */
+@XmlRootElement
 public class IdentificadorDTO {
 
-	/**
-	 * 
-	 */
-	private final String designacao;
+    /**
+     * Atributo correspondente a designação do identificador para o paciente.
+     */
+    private String designacao;
 
-	/**
-	 * 
-	 */
-	private final String area;
+    /**
+     * Atributo correspondente a área do identificador para o paciente.
+     */
+    private Integer area;
 
-	/**
-	 * 
-	 */
-	private final String emissor;
+    /**
+     * Atributo correspondente ao emissor do identificador para o paciente.
+     */
+    private String emissor;
 
-	/**
-	 * 
-	 */
-	private final String data;
+    /**
+     * Atributo correspondente a data do identificador para o paciente.
+     */
+    private LocalDate data;
 
-	/**
-	 * 
-	 */
-	private final String tipo;
+    /**
+     * Atributo correspondente ao tipo do identificador para o paciente.
+     */
+    private String tipo;
 
-	/**
-	 * 
-	 */
-	private final String uso;
+    /**
+     * Atributo correspondente a utilização do identificador para o paciente.
+     */
+    private UtilizacaoDTO utilizacao;
 
-	/**
-	 * 
-	 */
-	private final String dataInicio;
+    /**
+     * Atributo correspondente a certidão do identificador para o paciente.
+     */
+    private CertidaoDTO cetidao;
 
-	/**
-	 * 
-	 */
-	private final String dataFinal;
-	
+    /**
+     * Atributo correspondente a CTPS do identificador para o paciente.
+     */
+    private CtpsDTO ctps;
 
-	/**
-	 * @param designacao
-	 * @param area
-	 * @param emissor
-	 * @param data
-	 * @param tipo
-	 * @param uso
-	 * @param dataInicio
-	 * @param dataFinal
-	 */
-	public IdentificadorDTO(final String designacao, final String area, final String emissor, final String data,
-			final String tipo, final String uso, final String dataInicio, final String dataFinal) {
-		super();
-		this.designacao = designacao;
-		this.area = area;
-		this.emissor = emissor;
-		this.data = data;
-		this.tipo = tipo;
-		this.uso = uso;
-		this.dataInicio = dataInicio;
-		this.dataFinal = dataFinal;
-	}
+    /**
+     * Atributo correspondente ao vínculo do identificador para o paciente.
+     */
+    private VinculoDTO vinculo;
 
-	/**
-	 * @return the designacao
-	 */
-	public final String getDesignacao() {
-		return designacao;
-	}
+    /**
+     * Construtor sem parâmetros.
+     */
+    public IdentificadorDTO() {
 
-	/**
-	 * @return the area
-	 */
-	public final String getArea() {
-		return area;
-	}
+    }
 
-	/**
-	 * @return the emissor
-	 */
-	public final String getEmissor() {
-		return emissor;
-	}
+    /**
+     * Construtor para a classe IdentificadorDTO.
+     *
+     * @param desig Designaçao.
+     * @param ar Área.
+     * @param emis Emissor.
+     * @param dat Data.
+     * @param tip Tipo
+     * @param util Utilização.
+     * @param ceti Certidão.
+     * @param ct CTPS.
+     * @param vin Vínculo.
+     */
+    public IdentificadorDTO(final String desig, final Integer ar,
+            final String emis, final LocalDate dat, final String tip,
+            final UtilizacaoDTO util, final CertidaoDTO ceti, final CtpsDTO ct,
+            final VinculoDTO vin) {
+        this.designacao = desig;
+        this.area = ar;
+        this.emissor = emis;
+        this.data = dat;
+        this.tipo = tip;
+        this.utilizacao = util;
+        this.cetidao = ceti;
+        this.ctps = ct;
+        this.vinculo = vin;
+    }
 
-	/**
-	 * @return the data
-	 */
-	public final String getData() {
-		return data;
-	}
+    /**
+     * Retorna atributo 'designacao'.
+     *
+     * @return the designacao.
+     */
+    @XmlElement
+    public final String getDesignacao() {
+        return designacao;
+    }
 
-	/**
-	 * @return the tipo
-	 */
-	public final String getTipo() {
-		return tipo;
-	}
+    /**
+     * Retorna atributo 'area'.
+     *
+     * @return the area.
+     */
+    @XmlElement
+    public final Integer getArea() {
+        return area;
+    }
 
-	/**
-	 * @return the uso
-	 */
-	public final String getUso() {
-		return uso;
-	}
+    /**
+     * Retorna atributo 'emissor'.
+     *
+     * @return the emissor.
+     */
+    @XmlElement
+    public final String getEmissor() {
+        return emissor;
+    }
 
-	/**
-	 * @return the dataInicio
-	 */
-	public final String getDataInicio() {
-		return dataInicio;
-	}
+    /**
+     * Retorna atributo 'data'.
+     *
+     * @return the data.
+     */
+    @XmlElement
+    public final LocalDate getData() {
+        return data;
+    }
 
-	/**
-	 * @return the dataFinal
-	 */
-	public final String getDataFinal() {
-		return dataFinal;
-	}
+    /**
+     * Retorna atributo 'tipo'.
+     *
+     * @return the tipo.
+     */
+    @XmlElement
+    public final String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * Retorna atributo 'utilizacao'.
+     *
+     * @return the utilizacao.
+     */
+    @XmlElement
+    public final UtilizacaoDTO getUtilizacao() {
+        return utilizacao;
+    }
+
+    /**
+     * Retorna atributo 'cetidao'.
+     *
+     * @return the cetidao.
+     */
+    @XmlElement
+    public final CertidaoDTO getCetidao() {
+        return cetidao;
+    }
+
+    /**
+     * Retorna atributo 'ctps'.
+     *
+     * @return the ctps.
+     */
+    @XmlElement
+    public final CtpsDTO getCtps() {
+        return ctps;
+    }
+
+    /**
+     * Retorna atributo 'vinculo'.
+     *
+     * @return the vinculo.
+     */
+    @XmlElement
+    public final VinculoDTO getVinculo() {
+        return vinculo;
+    }
 
 }

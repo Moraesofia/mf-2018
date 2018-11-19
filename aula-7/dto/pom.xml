@@ -5,23 +5,23 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.moraesofia</groupId>
-    <artifactId>cnes</artifactId>
+    <artifactId>dto</artifactId>
     <packaging>jar</packaging>
     <version>1.0.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.mainClass>com.github.moraesofia.cnes.Main
+        <project.mainClass>com.github.moraesofia.dto
         </project.mainClass>
     </properties>
 
     <name>${project.groupId}:${project.artifactId}</name>
 
     <description>
-        Exercicio da aula 5 da disciplina Metodos e Ferramentas em ES, 2018/2.
+        Exercicio da aula 7 da disciplina Metodos e Ferramentas em ES, 2018/2.
     </description>
 
-    <url>https://github.com/Moraesofia/mf-2018/tree/master/aula-5/cnes</url>
+    <url>https://github.com/Moraesofia/mf-2018/tree/master/aula-7/dto</url>
 
     <organization>
         <name>Instituto de Informática (UFG) - Fábrica de Software</name>
@@ -102,7 +102,7 @@
     <build>
 
         <!-- Define o nome do arquivo a ser gerado (.jar é acrescentada) -->
-        <finalName>cnes</finalName>
+        <finalName>dto</finalName>
 
         <plugins>
 
@@ -232,10 +232,10 @@
                 </dependencies>
                 <configuration>
                     <targetClasses>
-                        <param>com.github.moraesofia.cnes.Main</param>
+                        <param>com.github.moraesofia.dto.IndividuoDTO</param>
                     </targetClasses>
                     <targetTests>
-                        <param>com.github.moraesofia.cnes.*</param>
+                        <param>com.github.moraesofia.dto.*</param>
                     </targetTests>
                 </configuration>
             </plugin>

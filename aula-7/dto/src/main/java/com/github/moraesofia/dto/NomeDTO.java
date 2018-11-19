@@ -2,163 +2,171 @@ package com.github.moraesofia.dto;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
- * Classe Nome que contem os atributos relevantes para a identificação do
+ * Classe NomeDTO que contem os atributos relevantes para a identificação do
  * paciente.
  * <p>
  * Para mais informações, consulte o "package.info".
- * 
- * @author aluno
+ *
+ * @author sofia
  *
  */
+@XmlRootElement
 public class NomeDTO {
 
-	/**
-	 * 
-	 */
-	private final String titulos;
+    /**
+     * Atributo correspondente à titulação.
+     */
+    private String titulos;
 
-	/**
-	 * 
-	 */
-	private final String nomes;
+    /**
+     * Atributo correspondente aos nomes.
+     */
+    private String nomes;
 
-	/**
-	 * 
-	 */
-	private final String sobrenomes;
+    /**
+     * Atributo correspondente aos sobrenomes.
+     */
+    private String sobrenomes;
 
-	/**
-	 * 
-	 */
-	private final String sufixos;
+    /**
+     * Atributo correspondente aos sufixos.
+     */
+    private String sufixos;
 
-	/**
-	 * 
-	 */
-	private final String preferido;
+    /**
+     * Atributo correspondente a preferencia.
+     */
+    private Integer preferido;
 
-	/**
-	 * 
-	 */
-	private final String usoCondicional;
+    /**
+     * Atributo correspondente ao uso condicional.
+     */
+    private Integer usoCondicional;
 
-	/**
-	 * 
-	 */
-	private final String uso;
+    /**
+     * Atributo correspondente as utilizações.
+     */
+    private List<UtilizacaoDTO> utilizacao;
 
-	/**
-	 * 
-	 */
-	private final String dataIncio;
+    /**
+     * Atributo correspondente as representações.
+     */
+    private List<RepresentacaoDTO> representacao;
 
-	/**
-	 * 
-	 */
-	private final String dataFim;
+    /**
+     * Construtor sem parâmetros.
+     */
+    public NomeDTO() {
+    }
 
-	/**
-	 *
-	 */
-	private List<RepresentacaoDTO> representacao;
+    /**
+     * Construtor para a classe NomeDTO.
+     *
+     * @param tit Títulos.
+     * @param nom Nomes.
+     * @param snom Sobrenomes.
+     * @param suf Sufixos.
+     * @param pref Preferido.
+     * @param uso Uso condicional.
+     * @param util Utilizações.
+     * @param rep Representações.
+     */
+    public NomeDTO(final String tit, final String nom, final String snom,
+            final String suf, final Integer pref, final Integer uso,
+            final List<UtilizacaoDTO> util, final List<RepresentacaoDTO> rep) {
+        super();
+        this.titulos = tit;
+        this.nomes = nom;
+        this.sobrenomes = snom;
+        this.sufixos = suf;
+        this.preferido = pref;
+        this.usoCondicional = uso;
+        this.utilizacao = util;
+        this.representacao = rep;
+    }
 
-	/**
-	 * @param titulos
-	 * @param nomes
-	 * @param sobrenomes
-	 * @param sufixos
-	 * @param preferido
-	 * @param usoCondicional
-	 * @param uso
-	 * @param dataIncio
-	 * @param dataFim
-	 */
-	public NomeDTO(final String titulos, final String nomes, final String sobrenomes, final String sufixos,
-			final String preferido, final String usoCondicional, final String uso, final String dataIncio,
-			final String dataFim, final List<RepresentacaoDTO> representacao) {
-		super();
-		this.titulos = titulos;
-		this.nomes = nomes;
-		this.sobrenomes = sobrenomes;
-		this.sufixos = sufixos;
-		this.preferido = preferido;
-		this.usoCondicional = usoCondicional;
-		this.uso = uso;
-		this.dataIncio = dataIncio;
-		this.dataFim = dataFim;
-		this.setRepresentacao(representacao);
-	}
+    /**
+     * Retorna atributo 'titulos'.
+     *
+     * @return the titulos.
+     */
+    @XmlElement
+    public final String getTitulos() {
+        return titulos;
+    }
 
-	/**
-	 * @return the titulos
-	 */
-	public final String getTitulos() {
-		return titulos;
-	}
+    /**
+     * Retorna atributo 'nomes'.
+     *
+     * @return the nomes.
+     */
+    @XmlElement
+    public final String getNomes() {
+        return nomes;
+    }
 
-	/**
-	 * @return the nomes
-	 */
-	public final String getNomes() {
-		return nomes;
-	}
+    /**
+     * Retorna atributo 'sobrenomes'.
+     *
+     * @return the sobrenomes.
+     */
+    @XmlElement
+    public final String getSobrenomes() {
+        return sobrenomes;
+    }
 
-	/**
-	 * @return the sobrenomes
-	 */
-	public final String getSobrenomes() {
-		return sobrenomes;
-	}
+    /**
+     * Retorna atributo 'sufixos'.
+     *
+     * @return the sufixos.
+     */
+    @XmlElement
+    public final String getSufixos() {
+        return sufixos;
+    }
 
-	/**
-	 * @return the sufixos
-	 */
-	public final String getSufixos() {
-		return sufixos;
-	}
+    /**
+     * Retorna atributo 'preferido'.
+     *
+     * @return the preferido.
+     */
+    @XmlElement
+    public final Integer getPreferido() {
+        return preferido;
+    }
 
-	/**
-	 * @return the preferido
-	 */
-	public final String getPreferido() {
-		return preferido;
-	}
+    /**
+     * Retorna atributo 'usoCondicional'.
+     *
+     * @return the usoCondicional.
+     */
+    @XmlElement
+    public final Integer getUsoCondicional() {
+        return usoCondicional;
+    }
 
-	/**
-	 * @return the usoCondicional
-	 */
-	public final String getUsoCondicional() {
-		return usoCondicional;
-	}
+    /**
+     * Retorna atributo 'utilizacao'.
+     *
+     * @return the utilizacao.
+     */
+    @XmlElement
+    public final List<UtilizacaoDTO> getUtilizacao() {
+        return utilizacao;
+    }
 
-	/**
-	 * @return the uso
-	 */
-	public final String getUso() {
-		return uso;
-	}
-
-	/**
-	 * @return the dataIncio
-	 */
-	public final String getDataIncio() {
-		return dataIncio;
-	}
-
-	/**
-	 * @return the dataFim
-	 */
-	public final String getDataFim() {
-		return dataFim;
-	}
-
-	public List<RepresentacaoDTO> getRepresentacao() {
-		return representacao;
-	}
-
-	public void setRepresentacao(List<RepresentacaoDTO> representacao) {
-		this.representacao = representacao;
-	}
+    /**
+     * Retorna atributo 'representacao'.
+     *
+     * @return the representacao.
+     */
+    @XmlElement
+    public final List<RepresentacaoDTO> getRepresentacao() {
+        return representacao;
+    }
 
 }

@@ -1,54 +1,66 @@
 package com.github.moraesofia.dto;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ * Classe RepresentacaoDTO que contem os atributos relevantes para a
+ * identificação do paciente.
+ * <p>
+ * Para mais informações, consulte o "package.info".
+ *
+ * @author sofia
+ *
+ */
+@XmlRootElement
 public class RepresentacaoDTO {
 
-	/**
-	 * 
-	 */
-	private String utilizacao;
-	
-	/**
-	 * 
-	 */
-	private String alternativa;
+    /**
+     * Atributo correspondente à utilização.
+     */
+    private String utilizacao;
 
-	/**
-	 * @param utilizacao
-	 * @param alternativa
-	 */
-	public RepresentacaoDTO(String utilizacao, String alternativa) {
-		super();
-		this.utilizacao = utilizacao;
-		this.alternativa = alternativa;
-	}
+    /**
+     * Atributo correspondente à utilização alternativa.
+     */
+    private String alternativa;
 
-	/**
-	 * @return the utilizacao
-	 */
-	public final String getUtilizacao() {
-		return utilizacao;
-	}
+    /**
+     * Construtor sem parâmetros.
+     */
+    public RepresentacaoDTO() {
+    }
 
-	/**
-	 * @return the alternativa
-	 */
-	public final String getAlternativa() {
-		return alternativa;
-	}
+    /**
+     * Construtor para a classe RepresentacaoDTO.
+     *
+     * @param util Utilização.
+     * @param alter Alternativa.
+     */
+    public RepresentacaoDTO(final String util, final String alter) {
+        super();
+        this.utilizacao = util;
+        this.alternativa = alter;
+    }
 
-	/**
-	 * @param utilizacao the utilizacao to set
-	 */
-	public final void setUtilizacao(String utilizacao) {
-		this.utilizacao = utilizacao;
-	}
+    /**
+     * Retorna atributo 'utilizacao'.
+     *
+     * @return the utilizacao.
+     */
+    @XmlElement
+    public final String getUtilizacao() {
+        return utilizacao;
+    }
 
-	/**
-	 * @param alternativa the alternativa to set
-	 */
-	public final void setAlternativa(String alternativa) {
-		this.alternativa = alternativa;
-	}
-	
-	
+    /**
+     * Retorna atributo 'alternativa'.
+     *
+     * @return the alternativa.
+     */
+    @XmlElement
+    public final String getAlternativa() {
+        return alternativa;
+    }
+
 }

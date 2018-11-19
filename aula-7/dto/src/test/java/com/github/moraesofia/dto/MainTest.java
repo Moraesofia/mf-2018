@@ -1,8 +1,8 @@
 package com.github.moraesofia.dto;
 
 /**
- * 
- * @author aluno
+ *
+ * @author sofia
  *
  */
 public class MainTest {
